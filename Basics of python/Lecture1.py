@@ -1,0 +1,6 @@
+print("hello World")
+print("hi world")
+print(0, False, "Ali")
+print("Ayesha", "Ali" , sep=",")
+print("Ayesha", "Ali" , end=" ")
+print("Hello")
