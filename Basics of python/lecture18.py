@@ -1,53 +1,52 @@
-#string is soo helpful in real world projects
-#strings are aequence of characters
-#in pythn strings are sequence of unicode character
+# Strings are very helpful in real-world projects
+# A string is a sequence of characters
+# In Python, strings are sequences of Unicode characters
 
-#- creating strings
+# - Creating strings
 # - Accessing strings
-# - adding char to strings
-# - edititng strings
-# - deleting strings
-# - operations strings
-# - strings functions
+# - Adding characters to strings
+# - Editing strings
+# - Deleting strings
+# - Operations on strings
+# - String functions
 
 
-
-#creatng 
+# ---------- Creating ----------
 print("hello")
 print("""hello""")
 
 
+# ---------- Accessing substrings ----------
+# Concept of indexing
+c = 'hello'
+print(c[0])      # h
 
-#Accessing substrings from a string
-#concept of indexing
-c= 'hello'
-print(c[0])
-#types of  indesing
- #- positive indexing
- #- Negative indxing
+# Types of indexing
+# - Positive indexing
+# - Negative indexing
 
-print(c[-2]) # usefull in whn you want a last value of string from user and you ctually don't know the value of string
+print(c[-2])     # l  (useful to get the last values of a string
+                 #     when you don't know its length)
 
 
+# ---------- Slicing ----------
+# Slicing gets one or more characters: c[start:stop:step]
+print('slicing', c[0:3])     # hel
+print('new', c[0:5:4])       # ho
+print(c[0:3:-2])             # '' (empty: with a positive range, don't use a negative step)
 
-#slicing - to get all character or more than one character
-print('slicing', c[0:3]) # c[start, stop , step]
-print('new',c[0:5:4])
-# print(c[0,3,-2]) #- empty stromg whn workimg with positive , don't use negative  
-# 
 c = 'hello'
 
-print(c[0:3:1])   # hello  (every character)
-print(c[0:3:2])   # hlo    (indexes 0, 2, 4)
-print(c[0:5:3])   # hl     (indexes 0, 3)
-print(c[::-1])    # olleh  (negative step reverses the string)
-
+print(c[0:3:1])   # hel   (every character from 0 to 2)
+print(c[0:3:2])   # hl    (indexes 0, 2)
+print(c[0:5:3])   # hl    (indexes 0, 3)
+print(c[::-1])    # olleh (negative step reverses the string)
 
 
 s = 'programming'
 
 print(s[0:4])        # prog
-print(s[2:8:2])      # ormn
+print(s[2:8:2])      # orm
 print(s[::3])        # pgmn
 print(s[3:])         # gramming
 print(s[:5])         # progr
@@ -58,91 +57,77 @@ print(s[8:2:-2])     # imr
 print(s[-1:-6:-1])   # gnimm
 
 
-
-
-
-
-#editing and deleting string
+# ---------- Editing and deleting ----------
 r = "heloo"
-r[0] = 'x' #it will throw error that you can't edit srings - ver imporant
- #strings are immutable datatype
- #mutataion mens change so i python we can't mute or change the string
+
+try:
+    r[0] = 'x'   # strings are immutable, this raises TypeError (very important)
+except TypeError as e:
+    print('Error:', e)
+
+# Immutable means we can't change the string in place.
+# We can only reassign the variable to a new string.
+r = 'x' + r[1:]
+print(r)         # xeloo
+
+# Deletion
+try:
+    del r[2]     # we cannot delete single characters
+except TypeError as e:
+    print('Error:', e)
+
+del r            # but we can delete the whole variable
+try:
+    print(r)
+except NameError as e:
+    print('Error:', e)   # name 'r' is not defined, because it was deleted
 
 
- #we can reassign but can mute and also don't add characters
+# ---------- Operations on strings ----------
+# - Arithmetic operators
+# - Relational operators
+# - Logical operators
+# - Looping on strings
+# - Membership operators
 
+# Arithmetic: concatenation
+r = 'hello' + ' ' + 'world'
+print('concatenation', r)
 
-
- #Deletion
- del r
-print(r) - #it give r not define as it deleted
-
-del[2]  #error we cannot delete items
-
-
-
-
-#operaions in string
-#arthematic operators
-#Relational operators
-#logical operators
-#lops on strings
-#membership operations
-
-
-#arthematic
-
-r = 'hello'+ ' ' + 'world'
-print('concatenation',r)
-
-#string multuplication
+# String multiplication
 print("*" * 59)
 print('hell' * 4)
 
 
-
-#Relational operators
-
-
-"hello" == "world" #false
-"america" > "india" #false whyyyy #lexiographical - according to dictionary i comes before tha A
-
-"kol" < "Kol" #false kuin ka choty letters bad ma aty hain jo bad ma ata ha it's bigger
+# Relational operators (compared lexicographically, like a dictionary)
+print("hello" == "world")   # False
+print("america" > "india")  # False, 'a' comes before 'i'
+print("kol" < "Kol")        # False, lowercase letters have bigger Unicode values than uppercase
 
 
-#logical operators
+# Logical operators
+print(bool("hell"))         # True  (non-empty string is truthy)
+print(bool(""))             # False (empty string is falsy)
 
-"hell" - #True
-"" #-false
+print("hell" and '')        # ''      (left truthy, returns right)
+print("" or "world")        # 'world' (left falsy, returns right)
 
-"hell" and '' # '' false
-"" or "world" #-true
-
-
-"hello" and "World" #= 'world
-"hello" and "World"   # 'World'  (left truthy, returns right)
-"" and "World"        # ''       (left falsy, returns left)
-"hello" or "World"    # 'hello'  (or returns the first truthy value)
-"" or "World"         # 'World'
-not "hello" #false
-not "" #true
+print("hello" and "World")  # 'World' (left truthy, returns right)
+print("" and "World")       # ''      (left falsy, returns left)
+print("hello" or "World")   # 'hello' (or returns the first truthy value)
+print("" or "World")        # 'World'
+print(not "hello")          # False
+print(not "")               # True
 
 
+# Looping on strings
+c = "hello World"
+
+for i in c:
+    print(i)
 
 
-#loop in strings
- c= "hello World"
-
-for i in c
-print(i)
-
-
-#membership operators
-
-"H" in c
-#false
-
-'world' in c
-#false
-
-
+# Membership operators
+print("H" in c)       # False (case-sensitive)
+print('world' in c)   # False (case-sensitive)
+print('World' in c)   # True
